@@ -6,6 +6,8 @@ import { WeatherController } from '../weather/weather.controller';
 import { WeatherService } from '../weather/weather.service';
 import { User } from '../entity/user.entity';
 import { Actions } from '../entity/actions.entity';
+import { UserController } from 'src/user/user.controller';
+import { UserService } from 'src/user/user.service';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { Actions } from '../entity/actions.entity';
     }),
     TypeOrmModule.forFeature([User, Actions]),
   ],
-  controllers: [WeatherController],
-  providers: [WeatherService],
+  controllers: [WeatherController, UserController],
+  providers: [WeatherService, UserService],
 })
 export class AppModule {}
