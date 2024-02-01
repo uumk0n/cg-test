@@ -1,5 +1,3 @@
-// app.module.ts
-
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WeatherController } from '../weather/weather.controller';
@@ -13,11 +11,11 @@ import { UserService } from 'src/user/user.service';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'db',
-      port: 3306,
-      username: 'root',
-      password: 'example',
-      database: 'mydatabase',
+      host: process.env.DBHOST,
+      port: parseInt(process.env.DBPORT, 10),
+      username: process.env.DBUSERNAME,
+      password: process.env.DBPASSWORD,
+      database: process.env.DBDATABASE,
       entities: [User, Actions],
       synchronize: false,
     }),

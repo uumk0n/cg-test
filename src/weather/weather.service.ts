@@ -2,7 +2,6 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import axios from 'axios';
-import * as dotenv from 'dotenv';
 import { User } from '../entity/user.entity';
 import { Actions } from '../entity/actions.entity';
 
@@ -25,7 +24,7 @@ export class WeatherService {
       throw new BadRequestException('Invalid token');
     }
 
-    dotenv.config();
+    
     let weatherResponse;
     try {
       const url = `http://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_API_KEY}&q=${data.city}&lang=${data.language || 'ru'}`;
