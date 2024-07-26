@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package weather;
+
+option go_package = "github.com/uumkon/cg-test/proto/weather";
+
+service WeatherService {
+    rpc GetCurrentWeather(CurrentWeatherRequest) returns (CurrentWeatherResponse);
+}
+
+message CurrentWeatherRequest {
+    string api_token = 1;
+    string city = 2;
+    string language = 3;
+}
+
+message CurrentWeatherResponse {
+    int32 status_code = 1;
+    float temp_c = 2;
+    string data = 3;
+}
